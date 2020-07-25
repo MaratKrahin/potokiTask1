@@ -3,23 +3,21 @@ package Potoki;
 import java.io.File;
 import java.io.IOException;
 
-public class createFile {
-    File file;
-    static StringBuilder buildFile = new StringBuilder();
-    public createFile(File file) {
-        this.file = file;
+public class MyFile {
+    private StringBuilder buildFile = new StringBuilder();
+
+    public StringBuilder getBuildFile() {
+        return buildFile;
     }
 
-    public static void crFile (File file) throws IOException {
-
-        try
-        {
+    public void createFile(String path) {
+        File file = new File(path);
+        try {
             boolean created = file.createNewFile();
-            if(created)
+            if (created)
                 buildFile.append("Создан файл: ").append(file.getName()).append("\n");
             else buildFile.append("Файл ").append(file.getName()).append(" уже существует").append("\n");
-        }
-        catch(IOException ex){
+        } catch (IOException ex) {
 
             System.out.println(ex.getMessage());
         }
